@@ -1,24 +1,23 @@
 package dmacc;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import dmacc.beans.Hotel;
+
 /**
  * @author booth - gboothroyd@dmacc.edu
  *CIS175 - Fall 2021
  * Nov 9, 2021
  */
+@SpringBootApplication
 public class TeamHotelApplication {
 
-	/**
-	 * 
-	 */
-	public TeamHotelApplication() {
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	
+		
+		
+		SpringApplication.run(TeamHotelApplication.class, args);
 
 	}
 
