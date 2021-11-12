@@ -18,7 +18,7 @@ public class WebControllerGary {
 @Autowired
 HotelRepository repo;
 
-@GetMapping({ "/", "viewAll" })
+@GetMapping({ "viewAll" })
 public String viewAllHotels(Model model) {
 model.addAttribute("hotel", repo.findAll());
 return "hotelresults";
