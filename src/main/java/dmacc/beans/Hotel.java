@@ -16,9 +16,9 @@ public class Hotel {
 	@GeneratedValue
 	private long id;
 	private String name;
-private String availability;
-private double roomPrice;
-private String roomSize;
+	private String availability;
+	private double roomPrice;
+	private String roomSize;
 	public Hotel() {
 		// TODO Auto-generated constructor stub
 	}
