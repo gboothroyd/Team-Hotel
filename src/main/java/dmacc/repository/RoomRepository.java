@@ -3,7 +3,7 @@ package dmacc.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import dmacc.beans.Hotel;
+import dmacc.beans.Room;
 
 
 /**
@@ -12,6 +12,6 @@ import dmacc.beans.Hotel;
  * Nov 10, 2021
  */
 @Repository
-public interface HotelRepository  extends JpaRepository<Hotel, Long> { } 
+public interface RoomRepository  extends JpaRepository<Room, Long> { } 
 
 
