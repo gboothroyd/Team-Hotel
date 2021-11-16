@@ -13,11 +13,12 @@
 				<th>Size</th>
 			</tr>
 			<tr th:each="currentRoom : ${room}">
-				<!-- <td th:text="${currentRoom.id}" /> -->
+				<td th:text="${currentRoom.id}" /> 
 				<td th:text="${currentRoom.roomNum}" />
 				<td th:text="${currentRoom.availability}" />
 				<td th:text="${currentRoom.roomPrice}" />
 				<td th:text="${currentRoom.roomSize}" />
+				<td><a th:href="@{/editRoom/{id}(id=${currentRoom.id})}">Edit a room</a></td>
 			</tr>
 		</table>
 	</form>

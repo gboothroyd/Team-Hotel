@@ -15,7 +15,7 @@
 				<th>Room Number</th>
 			</tr>
 			<tr th:each="currentReservation : ${reservation}">
-				<!-- <td th:text="${currentRoom.id}" /> -->
+				<!--<td th:text="${currentReservation.id}" /> -->
 				<td th:text="${currentReservation.guest.fName}" />
 				<td th:text="${currentReservation.guest.lName}" />
 				<td th:text="${currentReservation.startDate}" />
@@ -23,6 +23,7 @@
 				<td th:text="${currentReservation.numOccupants}" />
 				<td th:text="${currentReservation.room.roomNum}" />
 				<td><a th:href="@{/deleteReservation/{id}(id=${currentReservation.id})}">Delete</a></td>
+				<td><a th:href="@{/editReservation/{id}(id=${currentReservation.id})}">Edit a Reservation</a></td>
 			</tr>
 		</table>
 	</form>

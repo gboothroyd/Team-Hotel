@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
 
 import dmacc.beans.Reservation;
 import dmacc.beans.Room;
@@ -19,6 +21,7 @@ import dmacc.repository.RoomRepository;
 public class WebControllerGary {
 	@Autowired
 	RoomRepository repo;
+	
 
 	@GetMapping({ "viewAll" })
 	public String viewAllRooms(Model model) {
@@ -56,6 +59,32 @@ public class WebControllerGary {
 	public String getReservation(@PathVariable("id") long id, Model model) {
 		model.addAttribute(reservedrepo.findReservationByGuestId(id));
 	    return "guestreservation";
+	}
+	
+	@GetMapping("/editRoom/{id}")
+	public String showUpdateRoom(@PathVariable("id") long id, Model model) {
+	Room r = repo.findById(id).orElse(null);
+	model.addAttribute("newRoom", r);
+	return "EditRoom";
+	}
+	
+	@PostMapping("/updateRoom/{id}")
+	public String revisePhone(Room r, Model model) {
+	repo.save(r);
+	return viewAllRooms(model);
+	}
+	
+	@GetMapping("/editReservation/{id}")
+	public String showUpdateReservation(@PathVariable("id") long id, Model model) {
+	Reservation r = reservedrepo.findById(id).orElse(null);
+	model.addAttribute("newReservation", r);
+	return "editReservations";
+	}
+	
+	@PostMapping("/updateReservation/{id}")
+	public String reviseReservation(Reservation r, Model model) {
+	reservedrepo.save(r);
+	return viewAllReservations(model);
 	}
 
 
