@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Welcome to your hotel planner</title>
+</head>
+<body>
+	<form>
+		<table>
+			<tr>
+				<th>Room Number</th>
+				<th>Availability</th>
+				<th>Price</th>
+				<th>Size</th>
+			</tr>
+			<tr th:each="currentRoom : ${room}">
+				<!-- <td th:text="${currentRoom.id}" /> -->
+				<td th:text="${currentRoom.roomNum}" />
+				<td th:text="${currentRoom.availability}" />
+				<td th:text="${currentRoom.roomPrice}" />
+				<td th:text="${currentRoom.roomSize}" />
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
