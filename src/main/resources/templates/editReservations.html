@@ -3,35 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert a New Reservation</title>
-<script type = "text/javascript">
-         function validate() {
-             
-             if( myForm.roomNum.value == "" ) {
-                alert( "Please provide your room number!" );
-               myForm.roomNum.focus() ;
-                return false;
-             }
-             if( myForm.availability.value == "" ) {
-                alert( "Please provide your availability!" );
-               myForm.availability.focus() ;
-                return false;
-             }
-             if( myForm.roomPrice.value == "") {
-                
-                alert( "Please provide a room price." );
-                myForm.roomPrice.focus() ;
-                return false;
-             }
-             
-             if( myForm.roomSize.value == "") {
-                 
-                 alert( "Please provide a room size." );
-                 myForm.roomSize.focus() ;
-                 return false;
-              }
-             return( true );
-          }
-         </script>
 </head>
 <body>
 <form name=myForm th:object="${newReservation}" th:action="@{/updateReservation/{id}(id=${newReservation.id})}" method=POST onsubmit = "return(validate());">
