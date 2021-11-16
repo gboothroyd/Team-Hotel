@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Welcome to your hotel planner</title>
+</head>
+<body>
+	<form>
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Phone</th>
+				<th>Payment Method</th>
+			</tr>
+			<tr th:each="currentGuest : ${guest}">
+				<td th:text="${currentGuest.id}" />
+				<td th:text="${currentGuest.fName}" />
+				<td th:text="${currentGuest.lName}" />
+				<td th:text="${currentGuest.phone}" />
+				<td th:text="${currentGuest.paymentMethod}" />
+				<td><a th:href="@{/getReservation/{id}(id=${currentGuest.id})}">View Reservation</a></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

@@ -1,72 +1,104 @@
 package dmacc.controller;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import dmacc.beans.Hotel;
-import dmacc.repository.HotelRepository;
+import dmacc.beans.Guest;
+import dmacc.beans.Reservation;
+import dmacc.beans.Room;
+import dmacc.repository.GuestRepository;
+import dmacc.repository.ReservationRepository;
+import dmacc.repository.RoomRepository;
 
 /**
- * @author booth - gboothroyd@dmacc.edu
- *CIS175 - Fall 2021
- * Nov 10, 2021
+ * @author booth - gboothroyd@dmacc.edu CIS175 - Fall 2021 Nov 10, 2021
  */
 @Configuration
 public class BeanConfiguration {
 	@Autowired
-	HotelRepository repo;
-	
-
+	RoomRepository repo;
 
 	@Bean
-	public Hotel hotelMarriott() {
+	public Room room100() {
+
+		Room room100 = new Room("100", "Monday - Friday", 70.00, "200 square feet");
+		repo.save(room100);
+		return room100;
+	}
+
+	@Bean
+	public Room room101() {
+		Room room101 = new Room("101", "Saturday - Sunday", 90.00, "250 square feet");
+		repo.save(room101);
+		return room101;
+	}
+
+	@Bean
+	public Room room102() {
+		Room room102 = new Room("102", "Monday - Wednesday", 65.00, "150 square feet");
+		repo.save(room102);
+		return room102;
+	}
+
+	@Bean
+	public Room room103() {
+		Room room103 = new Room("103", "Thursday - Sunday", 102.00, "300 square feet");
+		repo.save(room103);
+		return room103;
+	}
+
+	@Bean
+	public Room room104() {
+		Room room104 = new Room("104", "Friday - Tuesday", 87.00, "225 square feet");
+		repo.save(room104);
+		return room104;
+	}
+
+	@Bean
+	public Room room105() {
+		Room room105 = new Room("105", "Monday - Wednesday", 92.00, "275 square feet");
+		repo.save(room105);
+		return room105;
+	}
+
+	@Bean
+	public Room room106() {
+		Room room106 = new Room("106", "Thursday - Tuesday", 76.00, "175 square feet");
+		repo.save(room106);
+		return room106;
+	}
+	
+	// Guests 
+	@Autowired
+	GuestRepository guestrepo;
+	
+	@Bean
+	public Guest morty() {
+		Guest morty = new Guest("Morty", "Smith", "111-222-3333", "VISA");
+		guestrepo.save(morty);
+		return morty;
+	}
+	
+	// Reservations 
+	@Autowired
+	ReservationRepository reservedrepo;
 		
-		Hotel marriott = new Hotel("Marriott", "Monday - Friday", 70.00, "200 sqaure feet");
-		repo.save(marriott);
-	return marriott;
+	@Bean
+	public Reservation mortyRes() {
+		Guest rick = new Guest("Rick", "Smith", "333-222-1111", "VISA");
+		Room room200 = new Room("200", "Monday - Friday", 70.00, "200 sqaure feet");
+		
+		
+		LocalDate start = LocalDate.now();
+		LocalDate end = start.plusDays(10);
+		
+		Reservation rickRes = new Reservation(rick, room200, start, end, 2);
+		reservedrepo.save(rickRes);
+		return rickRes;
 	}
 	
-	@Bean
-	public Hotel hotelHolidayInn() {
-		Hotel holidayInn = new Hotel("Holiday Inn", "Saturday - Sunday", 90.00, "250 square feet" );
-		repo.save(holidayInn);
-	return holidayInn;
-	}
-	
-	@Bean
-	public Hotel hotelComfortInn() {
-		Hotel comfortInn = new Hotel("Comfort Inn", "Monday - Wednesday", 65.00, "150 square feet"  );
-		repo.save(comfortInn);
-	return comfortInn;
-	}
-	
-	@Bean
-	public Hotel hotelBaymont() {
-		Hotel baymont = new Hotel("Baymont", "Thursday - Sunday", 102.00, "300 square feet"  );
-		repo.save(baymont);
-	return baymont;
-	}
-	
-	@Bean
-	public Hotel hotelRamada() {
-		Hotel ramada = new Hotel("Ramada", "Friday - Tuesday", 87.00, "225 square feet" );
-		repo.save(ramada);
-	return ramada;
-	}
-	
-	@Bean
-	public Hotel hotelDaysInn() {
-		Hotel daysInn = new Hotel("Days Inn", "Monday - Wednesday", 92.00, "275 square feet" );
-		repo.save(daysInn);
-	return daysInn;
-	}
-	
-	@Bean
-	public Hotel hotelSleepInn() {
-		Hotel sleepInn = new Hotel("Sleep Inn", "Thursday - Tuesday", 76.00, "175 square feet" );
-		repo.save(sleepInn);
-	return sleepInn;
-	}
 
 }
