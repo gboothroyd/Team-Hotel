@@ -25,8 +25,13 @@ public class Reservation {
 	private Guest guest;
 	@OneToOne(cascade=CascadeType.ALL)
 	private Room room;
-	private LocalDate startDate;
-	private LocalDate endDate;
+	
+	private String startDate;
+	private String endDate;
+	
+	//Date changed to String to facilitate "date" in html. EA	
+	//private LocalDate startDate;
+	//private LocalDate endDate;
 	private int numOccupants;
 
 	public Reservation() {
@@ -34,7 +39,7 @@ public class Reservation {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reservation(Guest guest, Room room, LocalDate startDate, LocalDate endDate, int numOccupants) {
+	public Reservation(Guest guest, Room room, String startDate, String endDate, int numOccupants) {
 		super();
 		this.guest = guest;
 		this.room = room;
@@ -67,19 +72,19 @@ public class Reservation {
 		this.room = room;
 	}
 
-	public LocalDate getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(LocalDate startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 
-	public LocalDate getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(LocalDate endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 
