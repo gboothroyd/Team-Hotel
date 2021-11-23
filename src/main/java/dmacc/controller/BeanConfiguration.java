@@ -21,7 +21,6 @@ public class BeanConfiguration {
 	@Autowired
 	RoomRepository repo;
 
-
 	@Bean
 	public Room room100() {
 
@@ -72,7 +71,6 @@ public class BeanConfiguration {
 		return room106;
 	}
 	
-	
 	// Guests 
 	@Autowired
 	GuestRepository guestrepo;
@@ -84,23 +82,18 @@ public class BeanConfiguration {
 		return morty;
 	}
 	
-	
 	// Reservations 
 	@Autowired
 	ReservationRepository reservedrepo;
-	
-	
+		
 	@Bean
 	public Reservation mortyRes() {
 		Guest rick = new Guest("Rick", "Smith", "333-222-1111", "VISA");
 		Room room200 = new Room("200", "Monday - Friday", 70.00, "200 sqaure feet");
 		
 		
-		//LocalDate start = LocalDate.now();
-		//LocalDate end = start.plusDays(10);
-		
-		String start = "12-01-2021";
-		String end = "12-02-2021";
+		LocalDate start = LocalDate.now();
+		LocalDate end = start.plusDays(10);
 		
 		Reservation rickRes = new Reservation(rick, room200, start, end, 2);
 		reservedrepo.save(rickRes);
