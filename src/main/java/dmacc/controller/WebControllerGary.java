@@ -69,7 +69,7 @@ public class WebControllerGary {
 	}
 	
 	@PostMapping("/updateRoom/{id}")
-	public String revisePhone(Room r, Model model) {
+	public String reviseRoom(Room r, Model model) {
 	repo.save(r);
 	return viewAllRooms(model);
 	}
@@ -86,6 +86,11 @@ public class WebControllerGary {
 	reservedrepo.save(r);
 	return viewAllReservations(model);
 	}
+
+	
+	
+	
+
 
 
 }
