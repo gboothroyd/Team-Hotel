@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Rooms</title>
+</head>
+<body>
+	<div class="container">
+		<h1>Rooms</h1>
+		<hr>
+		<h2>Update Room</h2>
+
+		<form action="#" th:action="@{/saveRoom}" th:object="${room}"
+			method="POST">
+			
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{id}" />
+			
+			<input type="text" th:field="*{roomNum}" placeholder="Room Number" class="form-control mb-4 col-4">
+				
+			<input type="text" th:field="*{roomPrice}" placeholder="Room Price" class="form-control mb-4 col-4">
+				
+			<input type="text" th:field="*{roomSize}" placeholder="Room Size" class="form-control mb-4 col-4">
+			
+			<select th:field="*{availability}">
+				<option th:value = "yes">yes</option>
+				<option th:value = "no">no</option>
+				</select>
+				
+				<button type="submit" class="btn btn-info col-2"> Update Guest</button>
+		</form>
+		
+		<hr>
+		
+		<a th:href = "@{/}"> Back to Reservation List</a>
+		<br >
+		<a th:href = "@{/viewRooms}"> Back to Room List</a>
+	</div>
+</body>
+</html>

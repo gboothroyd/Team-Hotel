@@ -15,7 +15,11 @@ import dmacc.beans.Reservation;
 @Repository
 public interface ReservationRepository  extends JpaRepository<Reservation, Long> {
 	
+	//Queries now flow from the service and webcontroller files. EA
+	
+	
+	/*
 	@Query("SELECT r FROM Reservation r WHERE r.guest.id = ?1")
 	Reservation findReservationByGuestId(long id);
-	
+	*/
 } 

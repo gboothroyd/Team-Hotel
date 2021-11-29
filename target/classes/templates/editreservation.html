@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Update Reservation</title>
+</head>
+<body>
+	<div class="container">
+		<h1>Reservations</h1>
+		<hr>
+		<h2>Update Reservation</h2>
+
+		<form action="#" th:action="@{/saveReservation}" th:object="${reservation}"
+			method="POST">
+			
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{id}" />
+			
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{guest.id}" />
+			
+			<input type="text" th:field="*{guest.fName}" class="form-control mb-4 col-4"></label>
+				
+			<input type="text" th:field="*{guest.lName}" class="form-control mb-4 col-4"></label>
+				
+			<input type="date" th:field="*{startDate}" class="form-control mb-4 col-4">
+			
+			<input type="date" th:field="*{endDate}" class="form-control mb-4 col-4">
+				
+			<input type="number" th:field="*{numOccupants}" class="form-control mb-4 col-4">
+			
+			<input type="number" th:field="*{room.roomNum}" class="form-control mb-4 col-4">	
+				
+				<button type="submit" class="btn btn-info col-2"> Update Reservation</button>
+		</form>
+		
+		<hr>
+		
+		<a th:href = "@{/}"> Back to Reservation List</a>
+	</div>
+</body>
+
+</html>
