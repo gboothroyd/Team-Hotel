@@ -9,6 +9,22 @@
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 
+
+<!-- Begin DataTable setup -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-2.2.4/dt-1.10.13/fc-3.2.2/fh-3.1.2/r-2.1.0/sc-1.4.2/datatables.min.css" />
+<script>
+$(document).ready(function() {
+    var table = $('#emptab').DataTable( {
+    	lengthMenu: [ [5, 10, 25, 50, -1], [5, 10, 25, 50, "All"] ], // Show __ entries options
+        ordering: true, // Allow sorting
+        pagingType: "numbers", // Set paging style
+    } );
+});
+</script>
+<!-- End DataTable setup -->
+
 </head>
 
 <body>
@@ -24,20 +40,19 @@
 	
 
 	
-		<table border="1" class = "table table-striped table-responsive-md">
+		<table id="emptab" border="1" class = "table table-striped table-responsive-md">
 			<thead>
 				<tr>
-					<th>
-					<a th:href="@{'/employeePage/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">
-							Name</a>
+					<th><!-- <a th:href="@{'/employeePage/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">Name</a> -->
+					Name
 					</th>
-					<th>
-					<a th:href="@{'/employeePage/' + ${currentPage} + '?sortField=monthlySalary&sortDir=' + ${reverseSortDir}}">
-							Monthly Salary</a>
+					
+					<th><!-- <a th:href="@{'/employeePage/' + ${currentPage} + '?sortField=monthlySalary&sortDir=' + ${reverseSortDir}}">Monthly Salary</a> -->
+					Monthly Salary
 					</th>
-					<th>
-					<a th:href="@{'/employeePage/' + ${currentPage} + '?sortField=age&sortDir=' + ${reverseSortDir}}">
-							Age</a>
+					
+					<th><!-- <a th:href="@{'/employeePage/' + ${currentPage} + '?sortField=age&sortDir=' + ${reverseSortDir}}">Age</a> -->
+					Age
 					</th>	
 					
 				</tr>
@@ -54,7 +69,7 @@
 				</tr>
 			</tbody>
 		</table>
-		
+		<!--  
 		<div th:if = "${totalPages > 1}">
 			<div class = "row col-sm-10">
 				<div class = "col-sm-2">
@@ -76,7 +91,7 @@
 					<span th:unless="${currentPage < totalPages}">Last</span>
    				 </div>
 			</div>
-		</div>
+		</div>-->
 	</div>
 </body>
 </html>
