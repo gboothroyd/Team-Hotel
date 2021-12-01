@@ -1,0 +1,34 @@
+
+<div class="wrapper">
+            <form class="form1" action="http://localhost:8080/viewEmployees">
+                <div class="formtitle">
+                    Enter the password to proceed
+                </div>
+
+                <div class="input nobottomborder">
+                    <div class="inputtext">
+                        Password:
+                    </div>
+
+                    <div class="inputcontent">
+                        <input type="password" id="password" /><br />
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <input class="orangebutton" type="button" value="Login" onclick="checkPassword()" />
+                </div>
+            </form>
+        </div>
+
+       <script>
+      function checkPassword(){
+       if(document.getElementById('password').value == 'dylan'){
+        alert('Correct Password!'); 
+          location.href = "http://localhost:8080/viewEmployees";
+         } else {
+         alert('Wrong Password!');
+          return false;
+        }
+       }
+      </script>

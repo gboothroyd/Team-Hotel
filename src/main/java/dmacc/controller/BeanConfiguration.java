@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import dmacc.beans.Employee;
 import dmacc.beans.Guest;
 import dmacc.beans.Reservation;
 import dmacc.beans.Room;
+import dmacc.repository.EmployeeRepository;
 import dmacc.repository.GuestRepository;
 import dmacc.repository.ReservationRepository;
 import dmacc.repository.RoomRepository;
@@ -20,6 +22,8 @@ import dmacc.repository.RoomRepository;
 public class BeanConfiguration {
 	@Autowired
 	RoomRepository repo;
+	@Autowired
+	EmployeeRepository eRepo;
 
 
 	@Bean
@@ -70,6 +74,41 @@ public class BeanConfiguration {
 		Room room106 = new Room("106", "Thursday - Tuesday", 76.00, "175 square feet");
 		repo.save(room106);
 		return room106;
+	}
+	
+	@Bean
+	public Employee brad() {
+		Employee brad = new Employee("Brad Wellington", 2400.00, 22);
+		eRepo.save(brad);
+		return brad;
+	}
+	
+	@Bean
+	public Employee jeff() {
+		Employee jeff = new Employee("Jeff Bezos", 2000.00, 21);
+		eRepo.save(jeff);
+		return jeff;
+	}
+	
+	@Bean
+	public Employee harold() {
+		Employee harold = new Employee("Harold Johnson", 3500.00, 25);
+		eRepo.save(harold);
+		return harold;
+	}
+	
+	@Bean
+	public Employee deme() {
+		Employee deme = new Employee("Deme Olson", 4000.00, 20);
+		eRepo.save(deme);
+		return deme;
+	}
+	
+	@Bean
+	public Employee jessica() {
+		Employee jessica = new Employee("Jessica White", 2500.00, 28);
+		eRepo.save(jessica);
+		return jessica;
 	}
 	
 	

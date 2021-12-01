@@ -17,6 +17,7 @@ public class Room {
 	private String availability;
 	private double roomPrice;
 	private String roomSize;
+	private String discountCode;
 
 	public Room() {
 		super();
@@ -108,11 +109,34 @@ public class Room {
 	public void setRoomSize(String roomSize) {
 		this.roomSize = roomSize;
 	}
+	
+	
+	
+	/**
+	 * @return the discountCode
+	 */
+	public String getDiscountCode() {
+		return discountCode;
+	}
+
+	public void setDiscountCode(String discountCode) {
+		double discount = .1;
+		double roomPriceDiscount = 0;
+		this.discountCode = discountCode;
+		if(discountCode.equals("Hotel")) {
+			roomPriceDiscount = roomPrice * discount;
+			this.roomPrice = roomPrice - roomPriceDiscount;
+		}
+	}
 
 	@Override
 	public String toString() {
 		return "Room [id=" + id + ", roomNum" + roomNum + ", availability=" + availability + ", roomPrice=" + roomPrice + ", roomSize="
 				+ roomSize + "]";
 	}
+	
+	}
 
-}
+
+	
+

@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import dmacc.beans.Employee;
 import dmacc.beans.Guest;
 import dmacc.beans.Reservation;
 import dmacc.beans.Room;
+import dmacc.service.EmployeeService;
 import dmacc.service.GuestService;
 //import dmacc.repository.GuestRepository;
 //import dmacc.repository.ReservationRepository;
@@ -39,10 +41,28 @@ public class WebControllerGary {
 	@Autowired
 	private RoomService roomService;
 	
-    @GetMapping("/")
-    public String viewHomePage(Model model) {
+	@Autowired
+	private EmployeeService employeeService;
+	
+    @GetMapping("GuestServiceSignIn")
+    public String viewGuestServiceSignInPage(Model model) {
+    	return "guestservicesignin";
+    }
+    
+    @GetMapping("HotelManagementSignIn")
+    public String viewHotelManagementSignInPage(Model model) {
+    	return "hotelmanagementsignin";
+    }
+    
+    @GetMapping("GuestServicePage")
+   public String viewHomePage(Model model) {
     	return findPaginated(1, "guest", "asc", model);
     }
+    
+    @GetMapping("HotelManagementPage")
+    public String viewHotelManagementPage(Model model) {
+    	return findPaginated(1, "guest", "asc", model);
+     }
     
 	@GetMapping("/newReservation")
 	public String newReservation(Model model) {
@@ -144,6 +164,8 @@ public class WebControllerGary {
     public String viewRoomHomePage(Model model) {
     	return findRoomPaginated(1, "roomNum", "asc", model);
     }
+    
+    
 
 	@GetMapping("/newRoom")
 	public String newRoom(Model model) {
@@ -192,6 +214,32 @@ public class WebControllerGary {
 		model.addAttribute("listRooms", listRooms);
 		return "roomhomepage";
 	}
+	
+	@GetMapping("/employeePage/{pageNo}")
+	public String findEmployeePaginated(@PathVariable (value = "pageNo") int pageNo, 
+			@RequestParam("sortField") String sortField,
+			@RequestParam("sortDir") String sortDir,Model model) {
+		int pageSize = 10;
+		
+		Page<Employee> page = employeeService.findEmployeePaginated(pageNo, pageSize, sortField, sortDir);
+		List<Employee> listEmployees = page.getContent();
+		
+		model.addAttribute("currentPage", pageNo);
+		model.addAttribute("totalPages", page.getTotalPages());
+		model.addAttribute("totalItems", page.getTotalElements());
+		
+		model.addAttribute("sortField", sortField);
+		model.addAttribute("sortDir", sortDir);
+		model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+		
+		model.addAttribute("listEmployees", listEmployees);
+		return "employeehomepage";
+	}
+	
+	  @GetMapping("/viewEmployees")
+	    public String viewEmployeeHomePage(Model model) {
+	    	return findEmployeePaginated(1, "name", "asc", model);
+	    }
 	
 	/*
 	@Autowired
