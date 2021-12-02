@@ -1,7 +1,5 @@
 package dmacc.beans;
 
-import java.time.LocalDate;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,10 +26,6 @@ public class Reservation {
 	
 	private String startDate;
 	private String endDate;
-	
-	//Date changed to String to facilitate "date" in html. EA	
-	//private LocalDate startDate;
-	//private LocalDate endDate;
 	private int numOccupants;
 
 	public Reservation() {
@@ -101,10 +95,5 @@ public class Reservation {
 		return "Reservation [id=" + id + ", guest=" + guest + ", room=" + room + ", startDate=" + startDate
 				+ ", endDate=" + endDate + ", numOccupants=" + numOccupants + "]";
 	}
-
-
-
-
-
 
 }

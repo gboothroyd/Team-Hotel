@@ -120,7 +120,7 @@ public class WebControllerGary {
 			@RequestParam("sortField") String sortField,
 			@RequestParam("sortDir") String sortDir,
 			Model model) {
-		int pageSize = 5;
+		int pageSize = 500;// Changed to avoid conflicts with DataTables - DT
 		
 		Page<Guest> page = guestService.findGuestPaginated(pageNo, pageSize, sortField, sortDir);
 		List<Guest> listGuests = page.getContent();
@@ -143,7 +143,7 @@ public class WebControllerGary {
 			@RequestParam("sortField") String sortField,
 			@RequestParam("sortDir") String sortDir,
 			Model model) {
-		int pageSize = 5;
+		int pageSize = 500;// Changed to avoid conflicts with DataTables - DT
 		
 		Page<Reservation> page = resService.findPaginated(pageNo, pageSize, sortField, sortDir);
 		List<Reservation> listReservations = page.getContent();
@@ -198,7 +198,7 @@ public class WebControllerGary {
 			@RequestParam("sortField") String sortField,
 			@RequestParam("sortDir") String sortDir,
 			Model model) {
-		int pageSize = 10;
+		int pageSize = 500;// Changed to avoid conflicts with DataTables - DT
 		
 		Page<Room> page = roomService.findRoomPaginated(pageNo, pageSize, sortField, sortDir);
 		List<Room> listRooms = page.getContent();

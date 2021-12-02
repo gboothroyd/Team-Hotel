@@ -20,10 +20,6 @@ public class Guest {
 	private String lName;
 	private String phone;
 	private String paymentMethod;
-	//private String email;
-	//Reservation reserved;
-
-
 
 	public Guest() {
 		super();
@@ -83,10 +79,5 @@ public class Guest {
 		return "Guest [id=" + id + ", fName=" + fName + ", lName=" + lName + ", phone=" + phone + ", paymentMethod="
 				+ paymentMethod + "]";
 	}
-
-
-
-
-
 
 }
