@@ -6,7 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import dmacc.beans.Employee;
-import dmacc.beans.Room;
 
 /**
  * @author booth - gboothroyd@dmacc.edu

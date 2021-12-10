@@ -4,10 +4,11 @@
 <meta charset="ISO-8859-1">
 <title>Rooms</title>
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<link href = "hotel.css" rel = "stylesheet" type = "text/css">
 
 <!-- Begin DataTable setup -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -31,10 +32,13 @@ $(document).ready(function() {
 
 	<div class="container my-2">
 	<h1>Rooms</h1>
+	<hr>
+	<hr>
 	
-	<a th:href = "@{/newRoom}" class="btn btn-primary btn-sm mb-3"> New Room </a>
+	<a th:href = "@{/newRoom}" class="btn btn-info btn-sm mb-3"> New Room </a>
 	<a th:href = "@{/viewRooms}" class="btn btn-primary btn-sm mb-3"> All Rooms </a>
-	<a th:href = "@{GuestServicePage}" class="btn btn-primary btn-sm mb-3"> Back to Reservations </a>
+	<a th:href = "@{/guestServicePage}" class="btn btn-warning btn-sm mb-3"> Back to Reservations </a>
+	<a href = "index.html" class="btn btn-success btn-sm mb-3"> Vacation Planner </a>
 	
 		<table id="roomtab" border="1" class = "table table-striped table-responsive-md">
 			<thead>
@@ -47,8 +51,8 @@ $(document).ready(function() {
 					Room Price
 					</th>
 					
-					<th><!-- <a th:href="@{'/roomPage/' + ${currentPage} + '?sortField=roomSize&sortDir=' + ${reverseSortDir}}">Bed Type</a> -->
-					Bed Type
+					<th><!-- <a th:href="@{'/roomPage/' + ${currentPage} + '?sortField=roomSize&sortDir=' + ${reverseSortDir}}">Max Occupants</a> -->
+					Max Occupants
 					</th>
 					
 					<th><!-- <a th:href="@{'/roomPage/' + ${currentPage} + '?sortField=availability&sortDir=' + ${reverseSortDir}}">Availability?</a> -->
@@ -60,43 +64,18 @@ $(document).ready(function() {
 			</thead>
 			<tbody>
 				
-				<tr th:each="room : ${listRooms}">
-				
+				<tr th:each="room : ${listRooms}">		
 					<td th:text="${room.roomNum}" />
 					<td th:text="${room.roomPrice}"/>
 					<td th:text="${room.roomSize}"/>
 					<td th:text="${room.availability}"/>
 						
-					<td> <a th:href="@{/editRoom/{id}(id=${room.id})}" class="btn btn-primary">Update</a>
-						 <a th:href="@{/deleteRoom/{id}(id=${room.id})}" class="btn btn-danger">Delete</a>					
+					<td> <a th:href="@{/editRoom/{roomNum}(roomNum=${room.roomNum})}" class="btn btn-primary">Update</a>
+						 <a th:href="@{/deleteRoom/{roomNum}(roomNum=${room.roomNum})}" class="btn btn-danger">Delete</a>					
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		
-		<!--
-		<div th:if = "${totalPages > 1}">
-			<div class = "row col-sm-10">
-				<div class = "col-sm-2">
-					Total Rows: [[${totalItems}]] 
-				</div>
-				<div class = "col-sm-1">
-					<span th:each="i: ${#numbers.sequence(1, totalPages)}">
-						<a th:if="${currentPage != i}" th:href="@{'/roomPage/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
-						<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
-					</span>
-				</div>
-				<div class = "col-sm-1">
-					<a th:if="${currentPage < totalPages}" th:href="@{'/roomPage/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
-					<span th:unless="${currentPage < totalPages}">Next</span>
-				</div>
-				
-				 <div class="col-sm-1">
-    				<a th:if="${currentPage < totalPages}" th:href="@{'/roomPage/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
-					<span th:unless="${currentPage < totalPages}">Last</span>
-   				 </div>
-			</div>
-		</div> -->
 	</div>
 </body>
 </html>

@@ -1,28 +1,32 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Welcome to your room planner</title>
 </head>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<link href = "hotel.css" rel = "stylesheet" type = "text/css">
+
 
 <body>
 	<div class="container">
-		<h1>Rooms</h1>
+		<h1>Create Room</h1>
 		<hr>
-		<h2>Create Room</h2>
 
 		<form action="#" th:action="@{/saveRoom}" th:object="${room}" method="POST">
 			
-			<input type="text" th:field="*{roomNum}" placeholder="Room Number" class="form-control mb-4 col-4">
+			Room Number: <input type="text" th:field="*{roomNum}" placeholder="Room Number" class="form-control mb-4 col-4" required>
 				
-			<input type="text" th:field="*{roomPrice}" placeholder="Room Price" class="form-control mb-4 col-4">
+			Room Price: <input type="text" th:field="*{roomPrice}" class="form-control mb-4 col-4" required>
 				
-			<input type="text" th:field="*{roomSize}" placeholder="Room Size" class="form-control mb-4 col-4">
+			Number of Occupants: <input type="text" th:field="*{roomSize}" placeholder="1 - 3" class="form-control mb-4 col-4" required>
 			
-			<select th:field="*{availability}">
-				<option th:value = "yes">yes</option>
-				<option th:value = "no">no</option>
-				</select>
+			Days Available: <input type="text" th:field="*{availability}" placeholder="Sat - Sun" class="form-control mb-4 col-4" required>
+	
 				
 				<button type="submit" class="btn btn-info col-2"> Save Room</button>
 		</form>

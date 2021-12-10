@@ -4,34 +4,59 @@
 <title>Welcome to your hotel planner</title>
 </head>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<link href = "hotel.css" rel = "stylesheet" type = "text/css">
 
 <body>
 	<div class="container">
-		<h1>Reservations</h1>
+
+		<h1>Create Reservation</h1>
 		<hr>
-		<h2>Create Reservation</h2>
 
 		<form action="#" th:action="@{/saveReservation}" th:object="${reservation}" method="POST">
-				<input type="text" th:field="*{guest.fName}"
-				placeholder="Guest First Name" class="form-control mb-4 col-4">
+				<input type="text" th:field="*{guest.fName}" placeholder="Guest First Name" class="form-control mb-4 col-4" required >
 				
-				<input type="text" th:field="*{guest.lName}"
-				placeholder="Guest Last Name" class="form-control mb-4 col-4">
+				<input type="text" th:field="*{guest.lName}" placeholder="Guest Last Name" class="form-control mb-4 col-4" required >
+				 
+				Guest Phone Number:
+				<input type="text" th:field="*{guest.phone}" placeholder="555-555-5555" class="form-control mb-4 col-4" required>
+				
+				Guest Payment:
+				<select th:field="*{guest.paymentMethod}">
+				<option th:value = "VISA">Visa</option>
+				<option th:value = "MC">MasterCard</option>
+				<option th:value = "DC">Discover</option>
+				<option th:value = "AMEX">American Express</option>
+				</select>
+				<br>
+				<br>
 				
 				<input type="date" th:field="*{startDate}"
-				placeholder="Start Date" class="form-control mb-4 col-4">
+				placeholder="Start Date" class="form-control mb-4 col-4" required >
 				
 				<input type="date" th:field="*{endDate}"
-				placeholder="End Date" class="form-control mb-4 col-4">
+				placeholder="End Date" class="form-control mb-4 col-4" required >
 				
-				<input type="number" th:field="*{room.roomNum}"
-				placeholder="Room" class="form-control mb-4 col-4">
-				
+				Room Number:
+				<select name="room" id="room">
+					<option th:each="room : ${listroom}"
+							th:value = "${room.roomNum}"
+							th:text = "${room.roomNum}">
+					</option>
+				</select>
+				<br>
+				<br>
+				Number of Occupants:
 				<input type="number" th:field="*{numOccupants}"
-				placeholder="Number of Occupants" class="form-control mb-4 col-4">
+				placeholder="1 - 3" min="1" max="3" class="form-control mb-4 col-4">
+				<br>
 				
+				Discount Code: 
 				<input type="text" th:field="*{room.discountCode}"
-				placeholder="Discount Code" class="form-control mb-4 col-4">
+				placeholder="Discount Code (if applicable)" class="form-control mb-4 col-4" >
 				
 
 				<button type="submit" class="btn btn-info col-2"> Save Reservation</button>
@@ -39,7 +64,7 @@
 		
 		<hr>
 		
-		<a th:href = "@{GuestServicePage}"> Back to Reservation List</a>
+		<a th:href = "@{/guestServicePage}"> Back to Reservation List</a>
 	</div>
 </body>
 </html>

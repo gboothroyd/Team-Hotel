@@ -3,7 +3,6 @@ package dmacc.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import dmacc.beans.Employee;
-import dmacc.beans.Guest;
 
 /**
  * @author booth - gboothroyd@dmacc.edu

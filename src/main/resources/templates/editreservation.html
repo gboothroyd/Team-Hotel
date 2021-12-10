@@ -4,11 +4,18 @@
 <meta charset="UTF-8">
 <title>Update Reservation</title>
 </head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<link href = "hotel.css" rel = "stylesheet" type = "text/css">
+
+
 <body>
 	<div class="container">
-		<h1>Reservations</h1>
+		<h1>Update Reservation</h1>
 		<hr>
-		<h2>Update Reservation</h2>
 
 		<form action="#" th:action="@{/saveReservation}" th:object="${reservation}"
 			method="POST">
@@ -18,10 +25,23 @@
 			
 			<!-- Add hidden form field to handle update -->
 			<input type="hidden" th:field="*{guest.id}" />
-			
-			<input type="text" th:field="*{guest.fName}" class="form-control mb-4 col-4"></label>
+
+
+			Guest First Name: <input type="text" th:field="*{guest.fName}" class="form-control mb-4 col-4" placeholder="First Name">
 				
-			<input type="text" th:field="*{guest.lName}" class="form-control mb-4 col-4"></label>
+			Guest Last Name: <input type="text" th:field="*{guest.lName}" class="form-control mb-4 col-4" placeholder="Last Name">
+			
+			Guest Phone Number: <input type="text" th:field="*{guest.phone}" placeholder="555-555-5555" class="form-control mb-4 col-4">
+			
+			Guest Payment:
+			<select th:field="*{guest.paymentMethod}">
+			<option th:value = "VISA">Visa</option>
+			<option th:value = "MC">MasterCard</option>
+			<option th:value = "DC">Discover</option>
+			<option th:value = "AMEX">American Express</option>
+			</select>
+			<br>
+			<br>
 				
 			<input type="date" th:field="*{startDate}" class="form-control mb-4 col-4">
 			
@@ -29,14 +49,24 @@
 				
 			<input type="number" th:field="*{numOccupants}" class="form-control mb-4 col-4">
 			
-			<input type="number" th:field="*{room.roomNum}" class="form-control mb-4 col-4">	
+			Room Number:
+			<select name="room" id="room">
+				<option th:each="room : ${listroom}"
+						th:value = "${room.roomNum}"
+						th:text = "${room.roomNum}">
+				</option>
+			</select>
+			<br>
+			<br>
+			
+				
 				
 				<button type="submit" class="btn btn-info col-2"> Update Reservation</button>
 		</form>
 		
 		<hr>
 		
-		<a th:href = "@{GuestServicePage}"> Back to Reservation List</a>
+		<a th:href = "@{/guestServicePage}"> Back to Reservation List</a>
 	</div>
 </body>
 

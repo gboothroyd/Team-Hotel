@@ -3,11 +3,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Update Reservation</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 </head>
 <body>
 	<div class="container">
-		<h1>Guests</h1>
-		<hr>
 		<h2>Update Guest</h2>
 
 		<form action="#" th:action="@{/saveGuest}" th:object="${guest}"
@@ -32,9 +35,9 @@
 				<button type="submit" class="btn btn-info col-2"> Update Guest</button>
 		</form>
 		
-		<hr>
+		<br>
 		
-		<a th:href = "@{GuestServicePage}"> Back to Reservation List</a>
+		<a th:href = "@{/guestServicePage}"> Back to Reservation List</a>
 		<br >
 		<a th:href = "@{/viewGuests}"> Back to Guest List</a>
 	</div>
