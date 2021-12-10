@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import dmacc.beans.Employee;
@@ -66,6 +69,24 @@ public class WebControllerGary {
 		model.addAttribute("room", new Room());
 		return "newreservation";
 	}
+	
+	
+	@GetMapping("/newReservationGuest")
+	public String newReservationGuest(Model model) {
+		Reservation reservation = new Reservation();
+		model.addAttribute("reservation", reservation);
+		List<Room> listroom = roomService.getAllRooms();
+		model.addAttribute("listroom", listroom);
+		model.addAttribute("room", new Room());
+		return "newreservationguest";
+	}
+	
+	@PostMapping("/saveReservationGuest")
+	public String saveReservationGuest(@ModelAttribute("reservation") Reservation reservation) {
+		resService.saveReservation(reservation);
+		return "reservationcreated.html";
+	}
+	
 	
 	@PostMapping("/saveReservation")
 	public String saveReservation(@ModelAttribute("reservation") Reservation reservation) {
@@ -189,7 +210,7 @@ public class WebControllerGary {
 		this.roomService.deleteRoomById(roomNum);
 		return "redirect:/viewRooms";
 	}
-
+	
 	@GetMapping("/roomPage/{pageNo}")
 	public String findRoomPaginated(@PathVariable (value = "pageNo") int pageNo, 
 			@RequestParam("sortField") String sortField,

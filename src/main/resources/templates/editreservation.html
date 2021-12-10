@@ -27,11 +27,13 @@
 			<input type="hidden" th:field="*{guest.id}" />
 
 
+
 			Guest First Name: <input type="text" th:field="*{guest.fName}" class="form-control mb-4 col-4" placeholder="First Name">
 				
 			Guest Last Name: <input type="text" th:field="*{guest.lName}" class="form-control mb-4 col-4" placeholder="Last Name">
 			
 			Guest Phone Number: <input type="text" th:field="*{guest.phone}" placeholder="555-555-5555" class="form-control mb-4 col-4">
+
 			
 			Guest Payment:
 			<select th:field="*{guest.paymentMethod}">

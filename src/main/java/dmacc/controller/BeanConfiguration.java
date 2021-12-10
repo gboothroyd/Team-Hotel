@@ -4,7 +4,6 @@ package dmacc.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import dmacc.beans.Employee;
 import dmacc.beans.Room;
 import dmacc.repository.EmployeeRepository;
