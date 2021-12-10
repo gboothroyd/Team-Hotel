@@ -1,0 +1,87 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Reservation Created</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<style>
+.submission{
+	margin: auto;
+	text-align: center;
+    border: 3px solid black;
+    width: 60%;
+	padding: 10px;
+    width: 350px;
+    height:400px;
+
+}
+
+body {
+	background-color: white;
+    text-align: center;
+}
+
+h2 {
+	font-family: 'Boogaloo', cursive;
+}
+
+</style>
+
+
+<script>
+window.addEventListener('load', () => {
+
+    const first = sessionStorage.getItem('FIRST');
+    const last = sessionStorage.getItem('LAST');
+    const phone = sessionStorage.getItem('PHONE');
+    const payment = sessionStorage.getItem('PAYMENT');
+    const start = sessionStorage.getItem('START');
+    const end = sessionStorage.getItem('END');
+    const room = sessionStorage.getItem('ROOM');
+    const occupants = sessionStorage.getItem('OCCUPANTS');
+    const discount = sessionStorage.getItem('DISCOUNT');
+    
+    document.getElementById('reservationcreated-first').innerHTML = first;
+    document.getElementById('reservationcreated-last').innerHTML = last;  
+    document.getElementById('reservationcreated-phone').innerHTML = phone;
+    document.getElementById('reservationcreated-payment').innerHTML = payment; 
+    document.getElementById('reservationcreated-start').innerHTML = start;
+    document.getElementById('reservationcreated-end').innerHTML = end;
+    document.getElementById('reservationcreated-room').innerHTML = room;
+    document.getElementById('reservationcreated-occupants').innerHTML = occupants;
+    document.getElementById('reservationcreated-discount').innerHTML = discount;
+})
+
+</script>
+
+</head>
+
+
+
+<body>
+	<br>
+	<h2 style="padding-top: 25px;">Reservation Created</h2>
+	<p>Feel free to print this page and save it until the reservation date</p>
+	<br>
+
+	<div class="submission">
+		Submission Information
+		<hr>
+        
+        <p><b>Name:</b> <span id="reservationcreated-last" /></span>, <span id="reservationcreated-first"></span></p>
+        <p><b>Phone Number:</b> <span id="reservationcreated-phone" /></span></p>
+        <p><b>Payment Type:</b> <span id="reservationcreated-payment" /></span></p>
+        <p><b>Start Date:</b> <span id="reservationcreated-start" /></span></p>
+        <p><b>End Date:</b> <span id="reservationcreated-end" /></span></p>
+        <p><b>Room Number:</b> <span id="reservationcreated-room" /></span></p>
+        <p><b>Occupants:</b> <span id="reservationcreated-occupants" /></span></p>
+        <p><b>Discount Code:</b> <span id="reservationcreated-discount" /></span></p>
+		
+	</div>
+	<br><br>
+	<a href = "index.html" class="btn btn-success btn-sm mb-3"> Return to Homepage </a>
+</body>
+</html>

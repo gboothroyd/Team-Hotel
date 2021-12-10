@@ -23,11 +23,6 @@ public class Room {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param availability
-	 * @param roomPrice
-	 * @param roomSize
-	 */
 	public Room(long roomNum, String availability, double roomPrice, String roomSize) {
 		super();
 		this.roomNum = roomNum;
@@ -37,25 +32,15 @@ public class Room {
 
 	}
 
-	/**
-	 * @return the availability
-	 */
-
 	public String getAvailability() {
 		return availability;
 	}
 
-
-	/**
-	 * @return the name
-	 */
 	public long getRoomNum() {
 		return roomNum;
 	}
 
-	/**
-	 * @param name the name to set
-	 */
+
 	public void setRoomNum(long roomNum) {
 		this.roomNum = roomNum;
 	}
@@ -64,39 +49,27 @@ public class Room {
 		this.availability = availability;
 	}
 
-	/**
-	 * @return the roomPrice
-	 */
+
 	public double getRoomPrice() {
 		return roomPrice;
 	}
 
-	/**
-	 * @param roomPrice the roomPrice to set
-	 */
+
 	public void setRoomPrice(double roomPrice) {
 		this.roomPrice = roomPrice;
 	}
 
-	/**
-	 * @return the roomSize
-	 */
+
 	public String getRoomSize() {
 		return roomSize;
 	}
 
-	/**
-	 * @param roomSize the roomSize to set
-	 */
+
 	public void setRoomSize(String roomSize) {
 		this.roomSize = roomSize;
 	}
 	
-	
-	
-	/**
-	 * @return the discountCode
-	 */
+
 	public String getDiscountCode() {
 		return discountCode;
 	}
@@ -115,10 +88,6 @@ public class Room {
 	public String toString() {
 		return "Room [roomNum=" + roomNum + ", availability=" + availability + ", roomPrice=" + roomPrice
 				+ ", roomSize=" + roomSize + ", discountCode=" + discountCode + "]";
+
 	}
-	
-	}
-
-
-	
-
+}
