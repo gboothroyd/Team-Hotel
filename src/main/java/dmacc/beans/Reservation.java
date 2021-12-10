@@ -1,6 +1,6 @@
 package dmacc.beans;
 
-import javax.persistence.CascadeType;
+//import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,9 +19,9 @@ public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	private Guest guest;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	private Room room;
 	
 	private String startDate;

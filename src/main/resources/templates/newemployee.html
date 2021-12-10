@@ -1,0 +1,40 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Welcome to your hotel planner</title>
+</head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<link href = "hotel.css" rel = "stylesheet" type = "text/css">
+
+<body>
+	<div class="container">
+
+		<h1>Create Employee</h1>
+		<hr>
+
+		<form action="#" th:action="@{/saveEmployee}" th:object="${employee}" method="POST">
+				<input type="text" th:field="*{name}"
+				placeholder="Employee Full Name" class="form-control mb-4 col-4" required>
+				
+				Salary:
+				<input type="text" th:field="*{monthlySalary}"
+				placeholder="$0000.00" class="form-control mb-4 col-4" required>
+				
+				Employee Age:
+				<input type="text" th:field="*{age}"
+				placeholder="Age" class="form-control mb-4 col-4" required>
+			
+
+				<button type="submit" class="btn btn-info col-2"> Save Employee</button>
+		</form>
+		
+		<hr>
+		
+		<a th:href = "@{/viewEmployees}"> Back to Employee List</a>
+	</div>
+</body>
+</html>

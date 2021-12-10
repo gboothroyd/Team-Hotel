@@ -34,20 +34,20 @@ public class RoomServiceImpl implements RoomService {
 	}
 
 	@Override
-	public Room getRoomById(long id) {
-		Optional<Room> optional = roomRepo.findById(id);
+	public Room getRoomById(long roomNum) {
+		Optional<Room> optional = roomRepo.findById(roomNum);
 		Room room = null;
 		if (optional.isPresent()) {
 			room = optional.get();
 		} else {
-			throw new RuntimeException(" Room not found for id : " + id);
+			throw new RuntimeException(" Room not found for id : " + roomNum);
 		}
 		return room;
 	}
 
 	@Override
-	public void deleteRoomById(long id) {
-		this.roomRepo.deleteById(id);
+	public void deleteRoomById(long roomNum) {
+		this.roomRepo.deleteById(roomNum);
 	}
 	
 	@Override

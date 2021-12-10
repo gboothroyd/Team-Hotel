@@ -11,9 +11,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import dmacc.beans.Employee;
-import dmacc.beans.Guest;
 import dmacc.repository.EmployeeRepository;
-import dmacc.repository.GuestRepository;
+
 
 /**
  * @author booth - gboothroyd@dmacc.edu

@@ -4,12 +4,11 @@
 <meta charset="ISO-8859-1">
 <title>Reservations</title>
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-
+<link href = "hotel.css" rel = "stylesheet" type = "text/css">
 
 <!-- Begin DataTable setup -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -21,7 +20,7 @@ $(document).ready(function() {
     	lengthMenu: [ [5, 10, 25, 50, -1], [5, 10, 25, 50, "All"] ], // Show __ entries options
         ordering: true, // Allow sorting
         pagingType: "numbers", // Set paging style
-        columnDefs: [{ orderable: false, searchable: false, targets: 7 }] // Disable ordering/searching on action column
+        columnDefs: [{ orderable: false, searchable: false, targets: 4 }] // Disable ordering/searching on action column
     } );
 });
 </script>
@@ -33,19 +32,17 @@ $(document).ready(function() {
 <body>
 
 	<div class="container my-2">
-	<h1>Reservations List</h1>
+	<h1>Reservations</h1>
+	<hr>
+	<hr>
 	
-	<a th:href = "@{/newReservation}" class="btn btn-primary btn-sm mb-3"> Add Reservation </a>
+	<a th:href = "@{/newReservation}" class="btn btn-info btn-sm mb-3"> New Reservation </a>
 	<a th:href = "@{/viewGuests}" class="btn btn-primary btn-sm mb-3"> All Guests </a>
 	<a th:href = "@{/viewRooms}" class="btn btn-primary btn-sm mb-3"> All Rooms </a>
+	<a href = "index.html" class="btn btn-success btn-sm mb-3"> Vacation Planner </a>
 	
-
 	
-	
-		<table border="1" class = "table table-striped table-responsive-md">
-
-		<table id= reservetab border="1" class = "table table-striped table-responsive-md">
-
+		<table border="1" class = "table table-striped table-responsive-md" id='reservetab'>
 			<thead>
 				<tr>
 					<th><!-- <a th:href="@{'/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}">Res ID</a> -->
@@ -95,30 +92,6 @@ $(document).ready(function() {
 				</tr>
 			</tbody>
 		</table>
-		
-		<!--
-		<div th:if = "${totalPages > 1}">
-			<div class = "row col-sm-10">
-				<div class = "col-sm-2">
-					Total Rows: [[${totalItems}]] 
-				</div>
-				<div class = "col-sm-1">
-					<span th:each="i: ${#numbers.sequence(1, totalPages)}">
-						<a th:if="${currentPage != i}" th:href="@{'/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
-						<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
-					</span>
-				</div>
-				<div class = "col-sm-1">
-					<a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
-					<span th:unless="${currentPage < totalPages}">Next</span>
-				</div>
-				
-				 <div class="col-sm-1">
-    				<a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
-					<span th:unless="${currentPage < totalPages}">Last</span>
-   				 </div>
-			</div>
-		</div> -->
 	</div>
 </body>
 </html>

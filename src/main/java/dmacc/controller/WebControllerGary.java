@@ -1,9 +1,5 @@
 package dmacc.controller;
 
-//import java.util.ArrayList;
-//import java.text.SimpleDateFormat;
-//import java.time.LocalDate;
-//import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +18,6 @@ import dmacc.beans.Reservation;
 import dmacc.beans.Room;
 import dmacc.service.EmployeeService;
 import dmacc.service.GuestService;
-//import dmacc.repository.GuestRepository;
-//import dmacc.repository.ReservationRepository;
-//import dmacc.repository.RoomRepository;
 import dmacc.service.ReservationService;
 import dmacc.service.RoomService;
 
@@ -40,26 +33,26 @@ public class WebControllerGary {
 	private GuestService guestService;
 	@Autowired
 	private RoomService roomService;
-	
 	@Autowired
 	private EmployeeService employeeService;
 	
-    @GetMapping("GuestServiceSignIn")
+	
+    @GetMapping("/guestServiceSignIn")
     public String viewGuestServiceSignInPage(Model model) {
     	return "guestservicesignin";
     }
     
-    @GetMapping("HotelManagementSignIn")
+    @GetMapping("/hotelManagementSignIn")
     public String viewHotelManagementSignInPage(Model model) {
     	return "hotelmanagementsignin";
     }
     
-    @GetMapping("GuestServicePage")
-   public String viewHomePage(Model model) {
+    @GetMapping("/guestServicePage")
+    public String viewHomePage(Model model) {
     	return findPaginated(1, "guest", "asc", model);
     }
     
-    @GetMapping("HotelManagementPage")
+    @GetMapping("/hotelManagementPage")
     public String viewHotelManagementPage(Model model) {
     	return findPaginated(1, "guest", "asc", model);
      }
@@ -68,26 +61,32 @@ public class WebControllerGary {
 	public String newReservation(Model model) {
 		Reservation reservation = new Reservation();
 		model.addAttribute("reservation", reservation);
+		List<Room> listroom = roomService.getAllRooms();
+		model.addAttribute("listroom", listroom);
+		model.addAttribute("room", new Room());
 		return "newreservation";
 	}
 	
 	@PostMapping("/saveReservation")
 	public String saveReservation(@ModelAttribute("reservation") Reservation reservation) {
 		resService.saveReservation(reservation);
-		return "redirect:/";
+		return "redirect:/guestServicePage";
 	}
 	
 	@GetMapping("/editReservation/{id}")
 	public String editReservationById(@PathVariable ( value = "id") long id, Model model) {
 		Reservation reservation = resService.getReservationById(id);
 		model.addAttribute("reservation", reservation);
+		List<Room> listroom = roomService.getAllRooms();
+		model.addAttribute("listroom", listroom);
+		model.addAttribute("room", new Room());
 		return "editreservation";
 	}
 	
 	@GetMapping("/deleteReservation/{id}")
 	public String deleteReservationById(@PathVariable (value = "id") long id) {
 		this.resService.deleteReservationById(id);
-		return "redirect:/";
+		return "redirect:/guestServicePage";
 	}
 	
 	
@@ -115,7 +114,7 @@ public class WebControllerGary {
 		return "redirect:/viewGuests";
 	}
 
-	@GetMapping("/guestPage/{pageNo}")
+	@GetMapping("/guestServicePage/{pageNo}")
 	public String findGuestPaginated(@PathVariable (value = "pageNo") int pageNo, 
 			@RequestParam("sortField") String sortField,
 			@RequestParam("sortDir") String sortDir,
@@ -165,8 +164,6 @@ public class WebControllerGary {
     	return findRoomPaginated(1, "roomNum", "asc", model);
     }
     
-    
-
 	@GetMapping("/newRoom")
 	public String newRoom(Model model) {
 		Room room = new Room();
@@ -174,9 +171,9 @@ public class WebControllerGary {
 		return "newroom";
 	}
     
-	@GetMapping("/editRoom/{id}")
-	public String editRoomById(@PathVariable ( value = "id") long id, Model model) {
-		Room room = roomService.getRoomById(id);
+	@GetMapping("/editRoom/{roomNum}")
+	public String editRoomById(@PathVariable ( value = "roomNum") long roomNum, Model model) {
+		Room room = roomService.getRoomById(roomNum);
 		model.addAttribute("room", room);
 		return "editroompage";
 	}
@@ -187,9 +184,9 @@ public class WebControllerGary {
 		return "redirect:/viewRooms";
 	}
 	
-	@GetMapping("/deleteRoom/{id}")
-	public String deleteRoomById(@PathVariable (value = "id") long id) {
-		this.roomService.deleteRoomById(id);
+	@GetMapping("/deleteRoom/{roomNum}")
+	public String deleteRoomById(@PathVariable (value = "roomNum") long roomNum) {
+		this.roomService.deleteRoomById(roomNum);
 		return "redirect:/viewRooms";
 	}
 
@@ -219,7 +216,7 @@ public class WebControllerGary {
 	public String findEmployeePaginated(@PathVariable (value = "pageNo") int pageNo, 
 			@RequestParam("sortField") String sortField,
 			@RequestParam("sortDir") String sortDir,Model model) {
-		int pageSize = 10;
+		int pageSize = 500;
 		
 		Page<Employee> page = employeeService.findEmployeePaginated(pageNo, pageSize, sortField, sortDir);
 		List<Employee> listEmployees = page.getContent();
@@ -234,81 +231,37 @@ public class WebControllerGary {
 		
 		model.addAttribute("listEmployees", listEmployees);
 		return "employeehomepage";
-	}
+		}
 	
 	  @GetMapping("/viewEmployees")
-	    public String viewEmployeeHomePage(Model model) {
-	    	return findEmployeePaginated(1, "name", "asc", model);
+	  public String viewEmployeeHomePage(Model model) {
+		  return findEmployeePaginated(1, "name", "asc", model);
 	    }
-	
-	/*
-	@Autowired
-	RoomRepository repo;
-	
+	  
+	  @GetMapping("/newEmployee")
+	  public String newEmployee(Model model) {
+			Employee employee = new Employee();
+			model.addAttribute("employee", employee);
+			return "newemployee";
+		}
 
-	@GetMapping({ "viewAll" })
-	public String viewAllRooms(Model model) {
-		model.addAttribute("room", repo.findAll());
-		return "roomresults";
-	}
-	
-	// Guests
-	@Autowired
-	GuestRepository guestrepo;
-	@GetMapping({ "viewAllGuests" })
-	public String viewAllGuests(Model model) {
-		model.addAttribute("guest", guestrepo.findAll());
-		return "guestresults";
-	}
-	
-	// Reservations
-	@Autowired
-	ReservationRepository reservedrepo;
-	@GetMapping({ "viewAllReservations" })
-	public String viewAllReservations(Model model) {
-		model.addAttribute("reservation", reservedrepo.findAll());
-		return "reservationresults";
-	}
-	
-	@GetMapping("/deleteReservation/{id}")
-	public String deleteReservation(@PathVariable("id") long id, Model model) {
-		Reservation r = reservedrepo.findById(id).orElse(null);
-		reservedrepo.delete(r);
-	    return viewAllReservations(model);
-	}
-	
-	
-	@GetMapping("/getReservation/{id}")
-	public String getReservation(@PathVariable("id") long id, Model model) {
-		model.addAttribute(reservedrepo.findReservationByGuestId(id));
-	    return "guestreservation";
-	}
-	
-	@GetMapping("/editRoom/{id}")
-	public String showUpdateRoom(@PathVariable("id") long id, Model model) {
-	Room r = repo.findById(id).orElse(null);
-	model.addAttribute("newRoom", r);
-	return "EditRoom";
-	}
-	
-	@PostMapping("/updateRoom/{id}")
-	public String revisePhone(Room r, Model model) {
-	repo.save(r);
-	return viewAllRooms(model);
-	}
-	
-	@GetMapping("/editReservation/{id}")
-	public String showUpdateReservation(@PathVariable("id") long id, Model model) {
-	Reservation r = reservedrepo.findById(id).orElse(null);
-	model.addAttribute("newReservation", r);
-	return "editReservations";
-	}
-	
-	@PostMapping("/updateReservation/{id}")
-	public String reviseReservation(Reservation r, Model model) {
-	reservedrepo.save(r);
-	return viewAllReservations(model);
-	}
-*/
+	  @PostMapping("/saveEmployee")
+		public String saveEmployee(@ModelAttribute("employee") Employee employee) {
+			employeeService.saveEmployee(employee);
+			return "redirect:/viewEmployees";
+		}
+		
+	  @GetMapping("/editEmployee/{id}")
+		public String editEmployeeById(@PathVariable ( value = "id") long id, Model model) {
+			Employee employee = employeeService.getEmployeeById(id);
+			model.addAttribute("employee", employee);
+			return "editemployee";
+		}
+		
+	  @GetMapping("/deleteEmployee/{id}")
+		public String deleteEmployeeById(@PathVariable (value = "id") long id) {
+			this.employeeService.deleteEmployeeById(id);
+			return "redirect:/viewEmployees";
+		}
 
 }

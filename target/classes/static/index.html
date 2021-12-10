@@ -3,11 +3,67 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Start Planning Your Vacation</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<link href = "hotel.css" rel = "stylesheet" type = "text/css">
+
+<style>
+
+body {
+	background-color: #ccd9ff;
+	height: 100%;
+	margin: 0;
+}
+
+header {
+	padding: 0.5em;
+	background-color: #809fff;
+}
+
+img {
+	border: 10px inset black;
+    width: 80%;
+    height: auto;
+    margin: auto;    
+    display: block;
+}
+
+h2 {
+	color: black;
+}
+
+</style>
+
 </head>
 <body>
-<h1>Welcome to your vacation planner</h1>
-<a href="/newReservation">As a Guest click here to create a reservation</a><br />
-<a href="GuestServiceSignIn">If you are a part of Guest Services click here</a><br />
-<a href="HotelManagementSignIn">if you are the hotel management click here</a><br />
+
+<header>
+<h1>Welcome to Vacation Planning</h1>
+</header>
+
+    <div class = "row">
+	<div class = "col-md-4 bg-success text-dark">
+      <h2><a href="/newReservation">Guests!</a></h2>
+	  <img src="hotel_room.jpg">
+	  <h2>Hotel Reservations</h2>
+    </div>
+	
+    <div class = "col-md-4 bg-info text-dark">
+      <h2><a href="/hotelManagementSignIn">Management</a></h2>
+	  <img src="four_stars.jpg">
+	  <h2>Management Services</h2>
+    </div>
+
+    <div class = "col-md-4 bg-warning text-dark">
+      <h2><a href="/viewEmployees">Employees</a></h2>        
+      <img src="employees.jpg">
+      <h2>Employee Services</h2>
+    </div>
+</div>
+
 </body>
 </html>

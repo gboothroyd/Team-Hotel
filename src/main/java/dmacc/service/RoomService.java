@@ -16,8 +16,8 @@ import dmacc.beans.Room;
 public interface RoomService {
     List < Room > getAllRooms();
     void saveRoom(Room room);
-    Room getRoomById(long id);
-    void deleteRoomById(long id);
+    Room getRoomById(long roomNum);
+    void deleteRoomById(long roomNum);
     
     Page<Room> findRoomPaginated(int pageNo, int pageSize, String sortField, String sortDirect);
 }

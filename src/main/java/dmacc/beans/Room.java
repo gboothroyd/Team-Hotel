@@ -1,7 +1,6 @@
 package dmacc.beans;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -10,10 +9,10 @@ import javax.persistence.Id;
 
 @Entity
 public class Room {
+	
 	@Id
-	@GeneratedValue
-	private long id;
-	private String roomNum;
+	private long roomNum;
+	
 	private String availability;
 	private double roomPrice;
 	private String roomSize;
@@ -29,7 +28,7 @@ public class Room {
 	 * @param roomPrice
 	 * @param roomSize
 	 */
-	public Room(String roomNum, String availability, double roomPrice, String roomSize) {
+	public Room(long roomNum, String availability, double roomPrice, String roomSize) {
 		super();
 		this.roomNum = roomNum;
 		this.availability = availability;
@@ -46,35 +45,18 @@ public class Room {
 		return availability;
 	}
 
-	/**
-	 * @return the id
-	 */
-
-	/**
-	 * @param availability the availability to set
-	 */
-	public long getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	/**
 	 * @return the name
 	 */
-	public String getRoomNum() {
+	public long getRoomNum() {
 		return roomNum;
 	}
 
 	/**
 	 * @param name the name to set
 	 */
-	public void setRoomNum(String roomNum) {
+	public void setRoomNum(long roomNum) {
 		this.roomNum = roomNum;
 	}
 
@@ -131,8 +113,8 @@ public class Room {
 
 	@Override
 	public String toString() {
-		return "Room [id=" + id + ", roomNum" + roomNum + ", availability=" + availability + ", roomPrice=" + roomPrice + ", roomSize="
-				+ roomSize + "]";
+		return "Room [roomNum=" + roomNum + ", availability=" + availability + ", roomPrice=" + roomPrice
+				+ ", roomSize=" + roomSize + ", discountCode=" + discountCode + "]";
 	}
 	
 	}
