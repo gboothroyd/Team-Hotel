@@ -71,35 +71,35 @@ public class BeanConfiguration {
 	}
 	
 	@Bean
-	public Employee brad() {
+	public Employee employee1() {
 		Employee brad = new Employee("Brad Wellington", 2400.00, 22);
 		eRepo.save(brad);
 		return brad;
 	}
 	
 	@Bean
-	public Employee jeff() {
+	public Employee employee2() {
 		Employee jeff = new Employee("Jeff Bezos", 2000.00, 21);
 		eRepo.save(jeff);
 		return jeff;
 	}
 	
 	@Bean
-	public Employee harold() {
+	public Employee employee3() {
 		Employee harold = new Employee("Harold Johnson", 3500.00, 25);
 		eRepo.save(harold);
 		return harold;
 	}
 	
 	@Bean
-	public Employee deme() {
+	public Employee employee4() {
 		Employee deme = new Employee("Deme Olson", 4000.00, 20);
 		eRepo.save(deme);
 		return deme;
 	}
 	
 	@Bean
-	public Employee jessica() {
+	public Employee employee5() {
 		Employee jessica = new Employee("Jessica White", 2500.00, 28);
 		eRepo.save(jessica);
 		return jessica;
